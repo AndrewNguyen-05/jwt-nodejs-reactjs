@@ -13,5 +13,5 @@ configViewEngine(app);
 initWebRoutes(app);
 
 app.listen(PORT, () => {
-  `>>> JWT backend is listening at ${PORT}`;
+  console.log(`>>> JWT backend is listening at ${PORT}`);
 });
