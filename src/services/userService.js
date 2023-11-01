@@ -1,4 +1,4 @@
-import connection from "../configs/database";
+import connection from "../config/database";
 import bcrypt from "bcryptjs";
 
 const salt = bcrypt.genSaltSync(10);
