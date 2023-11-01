@@ -1,11 +1,13 @@
-import userServices from "../services/userServices";
+import userService from "../services/userService";
 
 const handleHomePage = (req, res) => {
   return res.render("home.ejs");
 };
 
-const handleUserPage = (req, res) => {
-  return res.render("user.ejs");
+const handleUserPage = async (req, res) => {
+  let userList = await userService.getUserList();
+  console.log(">>> Check userlist: ", userList);
+  return res.render("user.ejs", { userList });
 };
 
 const handleCreateNewUser = async (req, res) => {
@@ -13,7 +15,7 @@ const handleCreateNewUser = async (req, res) => {
   let password = req.body.password;
   let username = req.body.username;
 
-  await userServices.createNewUser(username, password, email);
+  await userService.createNewUser(username, password, email);
 
   return res.send("Create new User");
 };

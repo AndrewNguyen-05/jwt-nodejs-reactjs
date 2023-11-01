@@ -3,8 +3,8 @@ import bcrypt from "bcryptjs";
 
 const salt = bcrypt.genSaltSync(10);
 
-const hashUserPassword = (password) => {
-  let hashPassword = bcrypt.hashSync(password, salt);
+const hashUserPassword = (userPassword) => {
+  let hashPassword = bcrypt.hashSync(userPassword, salt);
   return hashPassword;
 };
 
@@ -17,6 +17,16 @@ const createNewUser = async (username, password, email) => {
   );
 };
 
+const getUserList = async () => {
+  let [results, fields] = await connection.query(`SELECT * FROM Users`);
+  return results;
+};
+
+const deleteUser = async (id) => {
+  await connection.query(`DELETE * FROM Users WHERE id = ?`, [id]);
+};
+
 module.exports = {
   createNewUser,
+  getUserList,
 };
