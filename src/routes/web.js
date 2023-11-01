@@ -1,12 +1,13 @@
 import express from "express";
-import homeControllers from "../controllers/homeControllers";
+import homeController from "../controllers/homeController";
 
 const router = express.Router();
 
 const initWebRoutes = (app) => {
-  router.get("/", homeControllers.handleHomePage);
-
-  router.get("/user", homeControllers.handleUserPage);
+  //path, handler
+  router.get("/", homeController.handleHomePage);
+  router.get("/user", homeController.handleUserPage);
+  router.post("/user/create-user", homeController.handleCreateNewUser);
 
   return app.use("/", router);
 };
