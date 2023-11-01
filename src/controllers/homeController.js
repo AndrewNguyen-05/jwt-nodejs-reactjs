@@ -1,4 +1,4 @@
-import CRUDServices from "../services/CRUDServices";
+import userServices from "../services/userServices";
 
 const handleHomePage = (req, res) => {
   return res.render("home.ejs");
@@ -12,7 +12,9 @@ const handleCreateNewUser = async (req, res) => {
   let email = req.body.email;
   let password = req.body.password;
   let username = req.body.username;
-  await CRUDServices.createNewUser(username, password, email);
+
+  await userServices.createNewUser(username, password, email);
+
   return res.send("Create new User");
 };
 
