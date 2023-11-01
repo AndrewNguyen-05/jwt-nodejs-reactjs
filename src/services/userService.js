@@ -22,11 +22,32 @@ const getUserList = async () => {
   return results;
 };
 
+const getUserById = async (id) => {
+  let [results, fields] = await connection.query(
+    `SELECT * FROM Users WHERE id = ?`,
+    [id]
+  );
+  let user = results && results.length > 0 ? results[0] : {};
+  return user;
+};
+
 const deleteUser = async (id) => {
-  await connection.query(`DELETE * FROM Users WHERE id = ?`, [id]);
+  await connection.query(`DELETE FROM Users WHERE id = ?`, [id]);
+};
+
+const updateUserById = async (id, username, email) => {
+  await connection.query(
+    `UPDATE Users 
+  SET username = ?, email = ?
+  WHERE id = ?`,
+    [username, email, id]
+  );
 };
 
 module.exports = {
   createNewUser,
   getUserList,
+  deleteUser,
+  getUserById,
+  updateUserById,
 };

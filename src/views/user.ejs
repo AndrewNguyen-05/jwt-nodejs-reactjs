@@ -69,7 +69,7 @@
           <table class="table table-hover table-bordered">
             <thead>
               <tr>
-                <th scope="col">#</th>
+                <th scope="col">Id</th>
                 <th scope="col">Username</th>
                 <th scope="col">Email</th>
                 <th>Action</th>
@@ -82,8 +82,20 @@
                 <td><%= user.username %></td>
                 <td><%= user.email %></td>
                 <td>
-                  <button class="btn btn-warning">edit</button>
-                  <button class="btn btn-danger">delete</button>
+                  <form
+                    style="display: inline"
+                    action="/update-user/<%= user.id %>"
+                    method="POST"
+                  >
+                    <button class="btn btn-warning">edit</button>
+                  </form>
+                  <form
+                    style="display: inline"
+                    action="/delete-user/<%= user.id %>"
+                    method="POST"
+                  >
+                    <button class="btn btn-danger" type="submit">delete</button>
+                  </form>
                 </td>
               </tr>
               <% }); %>
