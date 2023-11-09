@@ -5,6 +5,11 @@ const testAPI = (req, res) => {
   });
 };
 
+const handleRegister = (req, res) => {
+  console.log(">>> check data user:", req.body);
+};
+
 module.exports = {
   testAPI,
+  handleRegister,
 };
