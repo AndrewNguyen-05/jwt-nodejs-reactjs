@@ -5,7 +5,7 @@ import initAPIRoutes from "./routes/api";
 require("dotenv").config();
 import bodyParser from "body-parser";
 import configCors from "./config/cors";
-// import testConnection from "./config/connectDB";
+//import testConnection from "./config/connectDB";
 
 const app = express();
 const PORT = process.env.PORT || 8888;
@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 configViewEngine(app);
 
 //test connection to DB
-// testConnection();
+//testConnection();
 
 //routes
 initWebRoutes(app);
