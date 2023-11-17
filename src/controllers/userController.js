@@ -2,7 +2,7 @@ import userApiService from "../services/userApiService";
 
 const readFunc = async (req, res) => {
   try {
-    let data = await userApiService.getAllUser();
+    let data = await userApiService.getAllUsers();
     return res.status(200).json({
       EM: data.EM,
       EC: data.EC,
