@@ -77,10 +77,10 @@ const handleUserLogin = async (rawData) => {
     });
 
     if (user) {
-      console.log(
-        ">>> found the user with email/phone",
-        user.get({ plain: true })
-      );
+      // console.log(
+      //   ">>> found the user with email/phone",
+      //   user.get({ plain: true })
+      // );
       let checkPassword = isPasswordValid(rawData.password, user.password);
       console.log(`>>> is password correct: ${checkPassword}`);
       if (checkPassword) {
@@ -101,7 +101,6 @@ const handleUserLogin = async (rawData) => {
       DT: "",
     };
   } catch (error) {
-    console.log(">>> check error", error);
     return {
       EM: "There is something wrong in server services...",
       EC: "-2",
